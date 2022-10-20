@@ -1,3 +1,15 @@
+'''
+- Model name: reward-3rd-version
+- Date: 2022-10-20
+- Training time: 1h
+- Technical features: 
+    track alignment, 
+    no-driving backwards, 
+    more than half-speed, 
+    limited steering angle, 
+    drive near to track center
+'''
+
 import math
 
 def reward_function(params):
