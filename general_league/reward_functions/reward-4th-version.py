@@ -31,7 +31,7 @@ def reward_function(params):
     is_reversed = params['is_reversed']
     
     # Dfine the constant values for comparison
-    ABS_STEERING_THRESHOLD = 20.0
+    ABS_STEERING_THRESHOLD = 25.0
     DIRECTION_THRESHOLD = 10.0
 
     # Calculate the direction of the center line based on the closest waypoints
@@ -53,13 +53,11 @@ def reward_function(params):
     if all_wheels_on_track:
         reward = 1.0
         if ((track_width*0.5)-distance_from_center) >= 0.05:
-            reward += 3 # reward for staying in the center of the track
+            reward += 1.0 # reward for staying in the center of the track
         if steering_angle <= ABS_STEERING_THRESHOLD:
-            reward *= 4.0 # reward commonly if steering angle is in acceptable range
+            reward += 2.0 # reward commonly if steering angle is in acceptable range
         if speed >= 2.0:
-            reward *= speed*10.0 # reward heavily if speed is higher than half of max speed
-        if speed < 2.0:
-            reward *= speed*0.2 # penalize if speed is less than half of its max
+            reward *= speed*2.5 # reward heavily if speed is higher than half of max speed
         if direction_diff > DIRECTION_THRESHOLD:
             reward *= 0.1 # penalize if the car is not alligned with the track direction
 
