@@ -1,7 +1,7 @@
 '''
 - Model name: reward-3rd-version
-- Date: 2022-10-20
-- Training time: 4h
+- Date: 10/21/2022, 9:18:26 AM GMT-3
+- Training time: 1h
 - Technical features: 
     track alignment,
     more than half-speed, 
@@ -14,6 +14,7 @@
 - Space set: continuous
 - Speed: range from 0.5 to 4.0
 - Steering angle: range from -30 to 30
+- Best time: 02:05.006
 '''
 
 import math

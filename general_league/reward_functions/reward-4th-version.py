@@ -1,9 +1,9 @@
 '''
-- Model name: reward-3rd-version
-- Date: 2022-10-20
-- Training time: 4h
+- Model name: reward-4th-version
+- Date: 2022-10-21
+- Training time: 3h
 - Technical features: 
-    track alignment,
+    track alignment, 
     more than half-speed, 
     limited steering angle, 
     drive near to track center
