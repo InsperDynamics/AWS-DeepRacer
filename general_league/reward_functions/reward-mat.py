@@ -21,22 +21,20 @@ def reward_function(params):
     # Example of rewarding the agent to stay inside the two borders of the track
     
     # Read input parameters
-    all_wheels_on_track = params['all_wheels_on_track']
     distance_from_center = params['distance_from_center']
     steering_angle = params['steering_angle']
     speed = params['speed']
     is_offtrack = params["is_offtrack"]
     crashed = params["is_crashed"]
-    
-    
-    ABS_STEERING_THRESHOLD = 20
+    progress = params['progress']
     
     r = speed
     k = distance_from_center
     n = steering_angle
+    m = progress
     
     # reward = r*((1e-3)**((-k)*n)) --------> antiga
-    reward = r*((n)**(-k))
+    reward = progress*r*((n)**(-k))
     
     if not is_offtrack and not crashed:
         reward+=1
