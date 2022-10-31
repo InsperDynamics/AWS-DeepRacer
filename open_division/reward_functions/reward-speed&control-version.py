@@ -55,14 +55,20 @@ def get_target_point(params):
         return waypoints[i_closest]
     return waypoints_starting_with_closest[i_first_outside]
 
-def reward_function(params):
+def reward_function(params): # optimizer struggle with negative numbers and numbers too close to zero
     if params['is_offtrack']:
         return 1e-3
+
     lines = list(np.arange(1, 51))+list(np.arange(64, 76))+list(np.arange(86, 96))+list(np.arange(117, 145))
-    closest_waypoints = params['closest_waypoints']
-    if closest_waypoints[0] in lines: # we chose the waypoint before the car to play safe
+    slowdown_lines = list(np.arange(41, 51))+list(np.arange(71, 76))+list(np.arange(90, 96))+list(np.arange(136, 145))
+    closest_waypoint = params['closest_waypoints'][0] # we chose the waypoint before the car to play safe
+    if closest_waypoint in lines:
         reward = (params['speed']/4)**7
-        return reward
+        if closest_waypoint in slowdown_lines:
+            reward = 1 - (params['speed']/4)
+        if abs(params['steering_angle']) > 5:
+            reward = 1e-3
+        return float(max(reward, 0.01))
 
     tx, ty = get_target_point(params)
     dx = tx-params['x']
@@ -71,4 +77,4 @@ def reward_function(params):
     best_steering_angle = angle_between_minus180_and_plus180(target_angle - params['heading'])
     error = (params['steering_angle'] - best_steering_angle) / 60.0
     reward = 1.0 - abs(error)
-    return float(max(reward, 0.01)) # optimizer struggle with negative numbers and numbers too close to zero
+    return float(max(reward, 0.01))
