@@ -25,3 +25,5 @@ We recommend the instalation of the following VSCode extension: `vscode-pdf`
   *Member*: Lucca Hiratsuca
   
   *Consultant*: Gabriel Valentim
+
+  *Consultant*: Lucas Hix
