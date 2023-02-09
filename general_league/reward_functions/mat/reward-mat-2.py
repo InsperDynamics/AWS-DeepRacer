@@ -13,7 +13,7 @@
 # - Space set: continuous
 # - Speed: range from 0.5 to 4.0
 # - Steering angle: range from -20 to 20
-# - Best time: 
+# - Best time: mais de 3 minutos
 
 
 def reward_function(params):
